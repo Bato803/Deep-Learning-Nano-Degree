@@ -19,3 +19,9 @@
   with lots of neurons, we are more likely to initialized with large extreme numbers. 
   
   - It's REALLY important to get your weights initialized correctly!!!!!!!!
+
+
+## Autoencoder
+
+1. Autoencoder find its own way in image denosing and image compression. 
+2. Using resize function to upsample image in a network might be better than doing transpose convolution, which will lead to checkboard artifact. 
