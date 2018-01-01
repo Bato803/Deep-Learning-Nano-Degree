@@ -25,3 +25,18 @@
 
 1. Autoencoder find its own way in image denosing and image compression. 
 2. Using resize function to upsample image in a network might be better than doing transpose convolution, which will lead to checkboard artifact. 
+
+
+## RNN
+
+- Perform the same task for each element in the input sequence. 
+
+### History
+- Feed Forward network is limited because they are unable to capture temperal dependency. 
+
+
+### RNN Structure
+- There are two main differences between FFNNs and RNNs. The Recurrent Neural Network uses:
+    - sequences as inputs in the training phase, and
+    - memory elements
+- Memory is defined as the output of hidden layer neurons, which will serve as additional input to the network during next training step.
