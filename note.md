@@ -40,3 +40,35 @@
     - sequences as inputs in the training phase, and
     - memory elements
 - Memory is defined as the output of hidden layer neurons, which will serve as additional input to the network during next training step.
+
+
+## Word Embedding
+
+### Word2Vec [link](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
+
+- Overview
+    - We’re going to train the neural network to do the following. Given a specific word in the middle of a sentence (the input word), look at the words nearby and pick one at random. The network is going to tell us the probability for every word in our vocabulary of being the “nearby word” that we chose.
+
+    - We’ll train the neural network to do this by feeding it word pairs found in our training documents. 
+
+    - The network is going to learn the statistics from the number of times each pairing shows up. So, for example, the network is probably going to get many more training samples of (“Soviet”, “Union”) than it is of (“Soviet”, “Sasquatch”). 
+
+- Model Detail
+
+    - First of all, We’re going to represent an input word like “ants” as a one-hot vector.
+    - When training this network on word pairs, the input is a one-hot vector representing the input word and the training output is also a one-hot vector representing the output word.
+    - the end goal of all of this is really just to learn this hidden layer weight matrix – the output layer we’ll just toss when we’re done!
+
+- Negative Sampling
+
+  - In the example I gave, we had word vectors with 300 components, and a vocabulary of 10,000 words. Recall that the neural network had two weight matrices–a hidden layer and output layer. Both of these layers would have a weight matrix with 300 x 10,000 = 3 million weights each!
+  - There are three innovations in this second paper:
+
+    - Treating common word pairs or phrases as single “words” in their model.
+    - Subsampling frequent words to decrease the number of training examples.
+    - Modifying the optimization objective with a technique they called “Negative Sampling”, which causes each training sample to update only a small percentage of the model’s weights.
+
+  - Word2Vec implements a “subsampling” scheme to address this. For each word we encounter in our training text, there is a chance that we will effectively delete it from the text. The probability that we cut the word is related to the word’s frequency.
+  - When training the network on the word pair (“fox”, “quick”), recall that the “label” or “correct output” of the network is a one-hot vector. That is, for the output neuron corresponding to “quick” to output a 1, and for all of the other thousands of output neurons to output a 0.
+  - With negative sampling, we are instead going to randomly select just a small number of “negative” words (let’s say 5) to update the weights for. (In this context, a “negative” word is one for which we want the network to output a 0 for). We will also still update the weights for our “positive” word (which is the word “quick” in our current example).
+
