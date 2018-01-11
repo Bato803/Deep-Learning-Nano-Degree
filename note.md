@@ -19,7 +19,7 @@
   with lots of neurons, we are more likely to initialized with large extreme numbers. 
   
   - It's REALLY important to get your weights initialized correctly!!!!!!!!
-
+  - ii
 
 ## Autoencoder
 
