@@ -113,3 +113,6 @@
 
 - Scale up network to work for large image. 
   - Use CNN to construct GAN. 
+
+
+## Deep Convolutional GAN
